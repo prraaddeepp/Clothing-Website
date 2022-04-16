@@ -36,9 +36,10 @@
     </header>
     <div class="clothes" >
         {% for cloth in clothes %}
+            <a href="/add_cart/{{cloth._id}}"> <img src= "{{url_for('static', filename=cloth.Source)}}"/> </a>      
             {{cloth.name}}
             {{cloth.size}}
-            {{cloth.price}}
+            {{cloth.Price}}
         {% endfor %}
     </div>
 </body>
