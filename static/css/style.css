@@ -93,7 +93,7 @@ html{
 }
 
 .main-background{
-    background: url(images/background2.jpg);
+    background: url(background2.jpg);
     background-size: cover;
     background-position: center;
     margin-top: 6%;
