@@ -257,3 +257,8 @@ letter-spacing: 3px;
   th:last-child{
     text-align:right;
   }
+
+.clothes{
+    border: solid black 5px;
+    margin-top: 30%;
+}
