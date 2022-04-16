@@ -3,7 +3,7 @@ from flask import Flask
 from flask import render_template
 from flask import request, redirect, session, url_for
 from flask_pymongo import PyMongo
-
+from men_clothes_library import gents
 import secrets
 
 
@@ -27,3 +27,11 @@ app.secret_key = secrets.token_urlsafe(16)
 @app.route('/index')
 def index():
     return render_template('index.html')
+
+@app.route('/men')
+def men():
+    collection = mongo.db.Men
+    # collection.insert_many(gents)
+    clothes = collection.find({})
+    return render_template('men.html', clothes=clothes)
+
