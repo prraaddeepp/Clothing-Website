@@ -5,6 +5,7 @@ from flask import request, redirect, session, url_for
 from flask_pymongo import PyMongo
 from men_clothes_library import gents
 import secrets
+from bson.objectid import ObjectId
 
 
 # # -- Initialization section --
@@ -34,4 +35,13 @@ def men():
     # collection.insert_many(gents)
     clothes = collection.find({})
     return render_template('men.html', clothes=clothes)
+
+@app.route('/add_cart/<clothID>')
+def add_cart(clothID):
+    collection1=mongo.db.Men
+    clothes=collection1.find_one({'_id':ObjectId(clothID)})
+    collection2=mongo.db.cart 
+    collection2.insert_one(clothes)
+    cart_clothes=collection2.find({})
+    return render_template('cart.html',clothes=cart_clothes)
 
