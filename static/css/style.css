@@ -93,7 +93,7 @@ html{
 }
 
 .main-background{
-    background: url(images/background2.jpg);
+    background: url(background2.jpg);
     background-size: cover;
     background-position: center;
     margin-top: 6%;
@@ -257,3 +257,82 @@ letter-spacing: 3px;
   th:last-child{
     text-align:right;
   }
+
+
+/*-----clothes items ------*/
+  
+  .clothesTitle{
+    padding: 20px;
+    padding-bottom: -20px;
+    padding-bottom: 0px;
+  }
+  .clothesTitle h1{
+    font-family: 'Source Serif Pro', serif;
+    font-size: 30px;
+    font-weight: 1000;
+    color:black;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .clothings{
+    margin-left: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    padding-top: 0px;
+  }
+  .eachCloth{
+    background-color: white;
+    padding: 5px;
+    margin-bottom: 40px;
+    align-content: center;
+    border: solid black 1px;
+  }
+  .eachCloth img{
+    float: left;
+    width:  200px;
+    height: 200px;
+    object-fit: cover;
+    padding: 5px;
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .eachCoth h2{
+    font-family: 'Source Serif Pro', serif;
+    color: black
+    
+  }
+  .eachCloth h1{
+    font-family: 'Cookie', cursive;
+    color: black;
+  }
+  .eachCloth a{
+    text-decoration: none;
+    color: black;
+      
+  }
+  .sidebar{
+    margin-top: 11%;
+    border:solid whitesmoke 1px;
+    width: 20%;
+    background-color: whitesmoke;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 20px;
+    font-weight: 1000;
+    color:black;
+    height: 222vh;
+    color: black;
+    text-align: left;
+    
+  }
+
+  .clothes{
+    top:25%;
+    margin-left:20%;
+    position: absolute;
+  }
+  
