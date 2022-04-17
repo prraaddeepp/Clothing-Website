@@ -270,10 +270,12 @@ letter-spacing: 3px;
     font-family: 'Source Serif Pro', serif;
     font-size: 30px;
     font-weight: 1000;
-    color: white;
+    color:black;
+    text-align: center;
+    margin-bottom: 20px;
   }
   .clothings{
-    margin-top: 10%;
+    margin-left: 15%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -289,8 +291,8 @@ letter-spacing: 3px;
   }
   .eachCloth img{
     float: left;
-    width:  280px;
-    height: 280px;
+    width:  200px;
+    height: 200px;
     object-fit: cover;
     padding: 5px;
     align-items: center;
@@ -312,5 +314,25 @@ letter-spacing: 3px;
     text-decoration: none;
     color: black;
       
+  }
+  .sidebar{
+    margin-top: 14%;
+    border:solid whitesmoke 1px;
+    width: 20%;
+    background-color: whitesmoke;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 20px;
+    font-weight: 1000;
+    color:black;
+    height: 217vh;
+    color: black;
+    text-align: left;
+    
+  }
+
+  .clothes{
+    top:25%;
+    margin-left:20%;
+    position: absolute;
   }
   
