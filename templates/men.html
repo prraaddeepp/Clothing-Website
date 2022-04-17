@@ -35,12 +35,22 @@
 
     </header>
     <div class="clothes" >
-        {% for cloth in clothes %}
-            <a href="/add_cart/{{cloth._id}}"> <img src= "{{url_for('static', filename=cloth.Source)}}"/> </a>      
-            {{cloth.name}}
-            {{cloth.size}}
-            {{cloth.Price}}
-        {% endfor %}
+        <div class="clothesTitle">
+            <h1> Available Gents Clothes on Sale</h1>
+        </div>
+        <div class="clothings">
+            {% for cloth in clothes %}
+                <div class="eachCloth">
+                    <a href="/add_cart/{{cloth._id}}"> <img src= "{{url_for('static', filename=cloth.Source)}}"/> </a>      
+                    <h2>{{cloth.name}}</h2>
+                    <h2>{{cloth.size}}</h2>
+                    <h1>${{cloth.Price}}</h1>
+                    <a href="/add_cart/{{cloth._id}}">Add to Cart</a>
+                </div>
+
+
+            {% endfor %}
+        </div>
     </div>
 </body>
 </html>
