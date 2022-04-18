@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrifters</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"> -->
+</head>
+<body>     
+    <header class="header">
+        <!-- <a href="#" id="logo"> <span>logo</span></a> -->
+        <img src="/static/images/Thrifters.png", class = 'logo'>
+        <nav class="navbar">
+            <a href="#"><b>home</b></a>
+            <a href="#"><b>women</b></a>
+            <a href="/men">men</a>
+            <a href="#"><b>Login</b></a>
+            <a href="#"><b>contact</b></a>
+        </nav>
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-bar"></div>
+            
+        </div>
+
+        <!-- can add search box later -->
+        
+        <!-- <div class="search-box">
+            <input type="search" placeholder="search here">
+        </div> -->
+
+
+
+    </header>
+    <div class= "description">
+        <img src= "{{url_for('static', filename=cloth.Source)}}"/><br><br>
+                 
+        <h2>Category: {{cloth.name}}</h2>
+        <h2>Size: {{cloth.size}}</h2>
+        <h2>Price(As low as): ${{cloth.Price}}</h2>
+        <h2>Description : {{cloth.description}}</h2> 
+
+        
+        
+
+
+
+    </div>
+    <div class="taskbar">
+        <div id="taskbar1">
+         <a href="/add_cart/{{cloth._id}}">Add to Cart</a><br>
+        </div>
+        <div id="taskbar2">
+         <a href="/men">Go back</a>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
