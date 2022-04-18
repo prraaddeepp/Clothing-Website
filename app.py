@@ -62,6 +62,25 @@ def add_cart(clothID):
     collection2=mongo.db.cart 
     collection2.insert_one(clothes)
     cart_clothes=collection2.find({})
+    total=sum(c['Price'] for c in cart_clothes)
+    return render_template('cart.html',clothes=cart_clothes,total=total)
+
+@app.route('/add_cart_w/<clothID>')
+def add_cart_w(clothID):
+    collection1=mongo.db.Women
+    clothes=collection1.find_one({'_id':ObjectId(clothID)})
+    collection2=mongo.db.cart 
+    collection2.insert_one(clothes)
+    cart_clothes=collection2.find({})
+    total=sum(c['Price'] for c in cart_clothes)
+    return render_template('cart.html',clothes=cart_clothes,total=total)
+
+@app.route('/Remove/<clothID>')
+def remove_items(clothID):
+    collection2=mongo.db.cart 
+    cloth_to_remove=collection2.find_one({'_id':ObjectId(clothID)})
+    collection2.delete_one(cloth_to_remove)
+    cart_clothes=collection2.find({})
     return render_template('cart.html',clothes=cart_clothes)
 
 @app.route('/view_details/<clothID>')
