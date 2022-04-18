@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Thrifters</title>
+        <link rel="stylesheet" href="static/css/style.css">
+        <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+    </head>
+<body>
+    <header class="header">
+        <!-- <a href="#" id="logo"> <span>logo</span></a> -->
+        <img src="static/images/Thrifters.png", class = 'logo'>
+        <nav class="navbar">
+            <a href="/"><b>home</b></a>
+            <a href="#"><b>women</b></a>
+            <a href="/men"><b>men</b></a>
+            <a href="#"><b>Login</b></a>
+            <a href="/contacts"><b>contact</b></a>
+        </nav>
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-bar"></div>
+            
+        </div>
+
+        <!-- can add search box later -->
+
+        <!-- <div class="search-box">
+            <input type="search" placeholder="search here">
+        </div> -->
+
+
+
+    </header>
+
+<div class="container">
+    <form action="action_page.php">
+
+    <label for="fname"><b>First Name</b></label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname"><b>Last Name</b></label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="email"><b>Email address</b></label>
+    <input type="text" id="email" name="email" placeholder="Your email address..">
+
+    <label for="country"><b>Country</b></label>
+    <select id="country" name="country">
+        <option value="australia">Australia</option>
+        <option value="canada">Canada</option>
+        <option value="usa">USA</option>
+        <option value="united kingdom">United kingdom</option>
+    </select>
+
+    <label for="subject"><b>Your Message</b></label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+
+    </form>
+</div>
+
+</body>

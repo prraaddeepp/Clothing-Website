@@ -36,6 +36,10 @@ def men():
     clothes = collection.find({})
     return render_template('men.html', clothes=clothes)
 
+@app.route('/contacts')
+def contacts():
+    return render_template('contacts.html')
+
 @app.route('/add_cart/<clothID>')
 def add_cart(clothID):
     collection1=mongo.db.Men
