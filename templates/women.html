@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrifters</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+</head>
+<body>     
+    <header class="header">
+        <!-- <a href="#" id="logo"> <span>logo</span></a> -->
+        <img src="static/images/Thrifters.png", class = 'logo'>
+        <nav class="navbar">
+            <a href="#"><b>home</b></a>
+            <a href="#"><b>women</b></a>
+            <a href="/men">men</a>
+            <a href="#"><b>Login</b></a>
+            <a href="#"><b>contact</b></a>
+        </nav>
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-bar"></div>
+            
+        </div>
+
+        <!-- can add search box later -->
+        
+        <!-- <div class="search-box">
+            <input type="search" placeholder="search here">
+        </div> -->
+
+
+
+    </header>
+    <div class="sidebar">
+        <br><br>
+        <p>Featured Products<br><br>
+        Categories: <br><br>
+        Dress<br><br>        
+        <img src="./static/images/women/1.jpg"><br><br>
+        Hat<br><br>      
+        <img src="./static/images/women/11.jpg"><br><br>
+        Boot<br><br>       
+        <img src="./static/images/women/10.jpg"><br><br>
+        Blouse<br><br>        
+        <img src="./static/images/women/4.jpg"><br><br>
+        Short<br><br>        
+        <img src="./static/images/women/8.jpg"><br><br>
+        
+        </p>
+        
+    </div>
+    <div class="clothes" >
+        <div class="clothesTitle">
+            <h1> Available Ladies Clothes on Sale</h1>
+        </div>
+        <div class="clothings">
+            {% for cloth in clothes %}
+                <div class="eachCloth">
+                    <a href="/view_details_w/{{cloth._id}}"> <img src= "{{url_for('static', filename=cloth.Source)}}"/> </a>      
+                    <h2>{{cloth.name}}</h2>
+                    <h2>{{cloth.size}}</h2>
+                    <h1>${{cloth.Price}}</h1>
+                    <p><a href="/add_cart/{{cloth._id}}">Add to Cart</a></p>
+                </div>
+
+
+            {% endfor %}
+        </div>
+    </div>
+    
+</body>
+</html>
