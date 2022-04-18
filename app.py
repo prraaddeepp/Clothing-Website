@@ -64,6 +64,15 @@ def add_cart(clothID):
     cart_clothes=collection2.find({})
     return render_template('cart.html',clothes=cart_clothes)
 
+@app.route('/add_cart_w/<clothID>')
+def add_cart_w(clothID):
+    collection1=mongo.db.Women
+    clothes=collection1.find_one({'_id':ObjectId(clothID)})
+    collection2=mongo.db.cart 
+    collection2.insert_one(clothes)
+    cart_clothes=collection2.find({})
+    return render_template('cart.html',clothes=cart_clothes)
+
 @app.route('/view_details/<clothID>')
 def view_details(clothID):
     collection1=mongo.db.Men
