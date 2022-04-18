@@ -220,10 +220,19 @@ letter-spacing: 3px;
   }
 .button1 {background-color: #4CAF50;} /* Green */
 /*-----cart items ------*/
-.cart-page{
-    margin: 80 px auto;
+
+.cart_page{
+    margin: 0 auto;
+    width:800px;
+    max-width:500px;
+    margin-top:9.5%;
+    margin-left:35%;
+    
+    
   }
+  
   table{
+    margin-top:10%;
     width:100%;
     border-collapse:collapse;
   }
@@ -233,13 +242,23 @@ letter-spacing: 3px;
   }
   th{
     text-align:left;
-    padding:5px;
+    padding:10px;
     color:white;
+    font-size:20px;
     background:lightblue;
     font-weight:normal;
+    margin:0 auto;
+    
+    
+  }
+  tr{
+    width:100px;
+    
   }
   td{
     padding:10px 5px;
+    font-size:15px;
+    text-align:center;
   }
   td input{
     width:40px;
@@ -248,7 +267,13 @@ letter-spacing: 3px;
   }
   td a{
     color:lightblue;
-    font-size:12px;
+    font-size:20px;
+  }
+  td p{
+    font-size:20px;
+  }
+  td small{
+    font-size:16px;
   }
   td img{
     width:80px;
@@ -257,13 +282,12 @@ letter-spacing: 3px;
   }
   .total-price{
     display:flex;
-    justify-content:flex-end;
-    
+    justify-content:flex-end;  
   }
   .total-price table{
     border-top:3px solid lightblue;
     width:100%;
-    max-width:350px;
+    max-width:500px;
   }
   td:last-child{
     text-align:right;
