@@ -310,6 +310,15 @@ letter-spacing: 3px;
     font-family: 'Cookie', cursive;
     color: black;
   }
+  .eachCloth p{
+    font-family: 'Source Serif Pro', serif;
+    width:30%;
+    font-size: 11px;
+    left:0%;
+    position: relative;
+
+    background-color: whitesmoke;
+  }
   .eachCloth a{
     text-decoration: none;
     color: black;
@@ -328,6 +337,12 @@ letter-spacing: 3px;
     color: black;
     text-align: left;
     
+  }
+  .sidebar img{
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+
   }
 
   .clothes{
@@ -374,3 +389,46 @@ input[type=text], select, textarea {
     padding: 20px;
   }
   
+  
+  .description{
+      top:30%;
+      color:black;
+      position:absolute;
+      margin-left:40%;
+           
+  }
+
+  .description img{
+      height:300px;
+      width:300px;
+      object-fit:cover;
+  }
+
+  
+ #taskbar1{
+      background-color: whitesmoke;
+      bottom:50%;
+      left:0%;
+      font-family: 'Source Serif Pro', serif;
+      font-size: 20px;
+      font-weight: 1000;
+      position:absolute;
+      vertical-align: middle;
+      border: solid black 1px;      
+      
+     
+      
+  }
+  #taskbar2{
+    background-color: whitesmoke;
+    bottom:50%;
+    right:0%;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 20px;
+    font-weight: 1000;
+    position:absolute;
+    border: solid black 1px;
+    
+   
+    
+}
