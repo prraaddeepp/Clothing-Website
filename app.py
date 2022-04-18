@@ -37,9 +37,23 @@ def men():
     clothes = collection.find({})
     return render_template('men.html', clothes=clothes)
 
-@app.route('/contacts')
+@app.route('/contacts', methods = ['GET','POST'])
 def contacts():
-    return render_template('contacts.html')
+    if request.method == "POST":
+        contactdb = mongo.db.contactdb
+        user_current = contactdb.find_one({'username': request.form['firstname']})
+        if not user_current:
+            firstname = request.form['firstname']
+            lastname = request.form['lastname']
+            username = request.form['email']
+            message = request.form['subject']
+            contactdb.insert_one({'firstname': firstname, 'lastname': lastname, 'email': username, 'message':message})
+            session['username'] = request.form['firstname']
+            return redirect('/contacts')
+        else:
+            return render_template('contacts.html', registration= 'User already exists!' )
+    else:
+        return render_template('contacts.html')
 
 @app.route('/add_cart/<clothID>')
 def add_cart(clothID):

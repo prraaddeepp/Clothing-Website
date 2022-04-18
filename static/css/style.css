@@ -205,6 +205,20 @@ letter-spacing: 3px;
     border-radius: 15px;
     z-index: 1000000;
 }
+
+.button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    padding: 1rem 3rem;
+    /* background: black; */
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 15px;
+    z-index: 1000000;
+    background-color: black;
+  }
+.button1 {background-color: #4CAF50;} /* Green */
 /*-----cart items ------*/
 .cart-page{
     margin: 80 px auto;
