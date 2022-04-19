@@ -41,17 +41,14 @@ def men():
 def contacts():
     if request.method == "POST":
         contactdb = mongo.db.contactdb
-        user_current = contactdb.find_one({'username': request.form['firstname']})
-        if not user_current:
-            firstname = request.form['firstname']
-            lastname = request.form['lastname']
-            username = request.form['email']
-            message = request.form['subject']
-            contactdb.insert_one({'firstname': firstname, 'lastname': lastname, 'email': username, 'message':message})
-            session['username'] = request.form['firstname']
-            return redirect('/contacts')
-        else:
-            return render_template('contacts.html', registration= 'User already exists!' )
+        # user_current = contactdb.find_one({'username': request.form['firstname']})
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        username = request.form['email']
+        message = request.form['subject']
+        contactdb.insert_one({'firstname': firstname, 'lastname': lastname, 'email': username, 'message':message})
+        session['username'] = request.form['firstname']
+        return redirect('/contacts')
     else:
         return render_template('contacts.html')
 
