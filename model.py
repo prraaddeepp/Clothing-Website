@@ -1,4 +1,5 @@
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 
 def get_totals(mongo):
     cart_collection=mongo.db.cart
@@ -11,8 +12,19 @@ def get_clothes(mongo):
     cart_clothes=cart_collection.find({})
     return cart_clothes
 
-'''def add_to_cart_men(mongo,clothID):
+def add_to_cart_men(mongo,clothID):
     collection1=mongo.db.Men
     clothes=collection1.find_one({'_id':ObjectId(clothID)})
     collection2=mongo.db.cart
-    collection2.insert_one(clothes)'''
+    collection2.insert_one(clothes)
+
+def add_to_cart_women(mongo,clothID):
+    collection1=mongo.db.Women
+    clothes=collection1.find_one({'_id':ObjectId(clothID)})
+    collection2=mongo.db.cart
+    collection2.insert_one(clothes)
+
+def remove_items_from_cart(mongo,clothID):
+    collection2=mongo.db.cart
+    cloth_to_remove=collection2.find_one({'_id':ObjectId(clothID)})
+    collection2.delete_one(cloth_to_remove)
