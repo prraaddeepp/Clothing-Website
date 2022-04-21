@@ -75,7 +75,6 @@ def remove_items(clothID):
     return render_cart_template(mongo)
 
 
-
 @app.route('/view_details/<clothID>')
 def view_details(clothID):
     collection1=mongo.db.Men
@@ -94,6 +93,44 @@ def view_details_w(clothID):
     collection1=mongo.db.Women
     clothes=collection1.find_one({'_id':ObjectId(clothID)})
     return render_template('clothes.html', cloth=clothes)
+
+@app.route('/Checkout', methods = ['GET','POST'])
+def checkout():
+    if request.method == 'GET':
+        return render_template('checkout.html')
+    elif request.method == 'POST':
+        cardnumber = request.form['cardnumber']
+        num = cardnumber                                     # this function adds every digit of the card number to a list and,
+        validlist=[]
+        credit_check = False
+        num =  int(num)
+        if type(num) != int:
+            raise TypeError("The input must be a number")
+
+        if num <= 0 or len(str(num)) > 16:
+            raise ValueError("Number can't be negative and the length can't be greater than 16")         
+        
+        num =  str(num)
+        #while not credit_check:
+        for i in num:
+            validlist.append(int(i))
+        for i in range(0,len(num),2):                                             # applying Luhn Algorithm to check whether resulting sum is divisible by ten
+            validlist[i] = validlist[i] * 2
+            if validlist[i]  >= 10:
+                validlist[i] =  (validlist[i]//10 + validlist[i]%10)
+        
+        if sum(validlist)% 10 == 0:
+            credit_check = True
+            print("This is a VALID CARD!")
+            return render_template('successful_transaction.html')
+        
+        else:
+            credit_check = False
+            print('INVALID CARD NUMBER')
+            return render_template('repeat_transaction.html')
+
+
+    # return render_template('checkout.html')
 
     
 
