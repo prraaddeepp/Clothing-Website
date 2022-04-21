@@ -39,7 +39,8 @@
         <table>
           <tr>
             <th>Product</th>
-            <th>Quantity</th>
+            <th>Category</th>
+            <th>Size</th>
             <th>Subtotal</th>
             </tr>
           <tr>
@@ -47,7 +48,8 @@
                 {% for cloth in clothes %}
                 <td><img src="{{url_for('static', filename=cloth.Source)}}"></td>
               <div>
-                <td><input name="dropdownlist" type="number" value="1"></td>
+                <td>{{cloth.name}}</td>
+                <td>{{cloth.size}}</td>
                 <td>${{cloth.Price}}</td>
               
              
@@ -65,7 +67,7 @@
           <table>
             <tr>
               <td>Subtotal</td>
-              <td>{{total}}</td>
+              <td>${{total}}</td>
             </tr>
             <tr>
               <td>Tax</td>
@@ -73,10 +75,15 @@
             </tr>
             <tr>
               <td>Total</td>
-              <td>{{main_total}}</td>
+              <td>${{main_total}}</td>
             </tr>
           </table>
         </div>
+        <div class="Proceed to Checkout">
+            <a href = "/new" class = "btn">Proceed to checkout</a>
+        </div>
+        
+            
          
     
     </div>
