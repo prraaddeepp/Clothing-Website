@@ -225,7 +225,7 @@ letter-spacing: 3px;
     margin: 0 auto;
     width:800px;
     max-width:500px;
-    margin-top:9.5%;
+    margin-top:12.4%;
     margin-left:35%;
     
     
@@ -294,6 +294,20 @@ letter-spacing: 3px;
   }
   th:last-child{
     text-align:right;
+  }
+  .btn{
+    text-align: center;
+    background:orange;
+    border-radius: .9rem;
+    padding-top: 0.3rem;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    position: relative;
+    left: 420px;
   }
 
 
