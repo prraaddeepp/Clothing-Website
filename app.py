@@ -65,7 +65,7 @@ def add_cart(clothID):
     return render_cart_template(mongo)
 
 @app.route('/add_cart_w/<clothID>')
-def add_cart_w(clothID):
+def add_cart_women(clothID):
     add_to_cart_women(mongo,clothID)
     return render_cart_template(mongo)
 
@@ -79,7 +79,7 @@ def remove_items(clothID):
 def view_details(clothID):
     collection1=mongo.db.Men
     clothes=collection1.find_one({'_id':ObjectId(clothID)})
-    return render_template('clothes.html', cloth=clothes)
+    return render_template('clothes.html', cloth=clothes, men_cloth= clothes)
 
 @app.route('/women')
 def women():
@@ -88,11 +88,11 @@ def women():
     clothes = collection.find({})
     return render_template('women.html', clothes=clothes)
 
-@app.route('/view_details_w/<clothID>')
-def view_details_w(clothID):
-    collection1=mongo.db.Women
-    clothes=collection1.find_one({'_id':ObjectId(clothID)})
-    return render_template('clothes.html', cloth=clothes)
+@app.route('/view_details_women/<clothID>')
+def view_details_women(clothID):
+    collection2=mongo.db.Women
+    clothes=collection2.find_one({'_id':ObjectId(clothID)})
+    return render_template('clothes.html', cloth=clothes, women_cloth= clothes)
 
 @app.route('/Checkout', methods = ['GET','POST'])
 def checkout():

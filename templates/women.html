@@ -13,13 +13,15 @@
 <body>     
     <header class="header">
         <!-- <a href="#" id="logo"> <span>logo</span></a> -->
-        <img src="static/images/Thrifters.png", class = 'logo'>
+        <a href="/index" >
+            <img src="static/images/Thrifters.png", class = 'logo'>
+        </a>
         <nav class="navbar">
-            <a href="#"><b>home</b></a>
-            <a href="#"><b>women</b></a>
-            <a href="/men">men</a>
-            <a href="#"><b>Login</b></a>
-            <a href="#"><b>contact</b></a>
+            <a href="/index"><b>home</b></a>
+            <a href="/women"><b>women</b></a>
+            <a href="/men"><b>men</b></a>
+            <a href="/women"><b>Login</b></a>
+            <a href="/contacts"><b>contact</b></a>
         </nav>
         <div class="icons">
             <div class="fas fa-bars" id="menu-bar"></div>
@@ -60,11 +62,11 @@
         <div class="clothings">
             {% for cloth in clothes %}
                 <div class="eachCloth">
-                    <a href="/view_details_w/{{cloth._id}}"> <img src= "{{url_for('static', filename=cloth.Source)}}"/> </a>      
+                    <a href="/view_details_women/{{cloth._id}}"> <img src= "{{url_for('static', filename=cloth.Source)}}"/> </a>      
                     <h2>{{cloth.name}}</h2>
                     <h2>{{cloth.size}}</h2>
                     <h1>${{cloth.Price}}</h1>
-                    <p><a href="/add_cart_w/{{cloth._id}}">Add to Cart</a></p>
+                    <p><a href="/add_cart_women/{{cloth._id}}">Add to Cart</a></p>
                 </div>
 
 

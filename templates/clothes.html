@@ -12,13 +12,15 @@
 <body>     
     <header class="header">
         <!-- <a href="#" id="logo"> <span>logo</span></a> -->
-        <img src="/static/images/Thrifters.png", class = 'logo'>
+        <a href="/index" >
+            <img src="static/images/Thrifters.png", class = 'logo'>
+        </a>
         <nav class="navbar">
-            <a href="#"><b>home</b></a>
-            <a href="#"><b>women</b></a>
-            <a href="/men">men</a>
-            <a href="#"><b>Login</b></a>
-            <a href="#"><b>contact</b></a>
+            <a href="/index"><b>home</b></a>
+            <a href="/women"><b>women</b></a>
+            <a href="/men"><b>men</b></a>
+            <a href="/women"><b>Login</b></a>
+            <a href="/contacts"><b>contact</b></a>
         </nav>
         <div class="icons">
             <div class="fas fa-bars" id="menu-bar"></div>
@@ -50,10 +52,18 @@
     </div>
     <div class="taskbar">
         <div id="taskbar1">
-         <a href="/add_cart/{{cloth._id}}">Add to Cart</a><br>
+            {% if men_cloth %}
+                <a href="/add_cart/{{cloth._id}}">Add to Cart</a><br>
+            {% else %}
+                <a href="/add_cart_women/{{cloth._id}}">Add to Cart</a><br>
+            {% endif %}
         </div>
         <div id="taskbar2">
-         <a href="/index">Go back</a>
+            {% if men_cloth %}
+                <a href="/men">Go Back</a><br>
+            {% else  %}
+                <a href="/women">Go Back</a><br>
+            {% endif %}
         </div>
     </div>
     
