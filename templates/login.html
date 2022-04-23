@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrifters</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+</head>    
+<body>
+    <header class="header">
+        <!-- <a href="#" id="logo"> <span>logo</span></a> -->
+        <a href="/index" >
+            <img src="static/images/Thrifters.png", class = 'logo'>
+        </a>
+        <nav class="navbar">
+            <a href="/index"><b>home</b></a>
+            <a href="/women"><b>women</b></a>
+            <a href="/men"><b>men</b></a>
+            <a href="/contacts"><b>contact</b></a>
+            {% if session %}
+                <a href="/cart"><b>Cart</b></a>
+                <a href='/logout'><b>Log Out({{session['username']}})</b></a>
+            {% else %}
+                <a href='/login'><b>Log In</b></a>
+                
+            {% endif %}
+            
+        </nav>
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-bar"></div>
+            
+        </div>
+
+
+
+    </header>
+    <section class="Experience" id="Experience"></section>
+
+        <div class="content">
+            <div class="row">
+                <div class="col-75">
+                <div class="container">
+                <form method = 'POST' action='/login'>
+            
+                    <div class="row">
+                        <div class="col-50">
+                        <h3><center><b></b>Already Signed Up?</b></center></h3><br><br>
+                        
+                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                        <input type="" id="email" name="email" placeholder="">
+                        <label for="adr"><i class="fa fa-address-card-o"></i> Password</label>
+                        <input type="password" id="adr" name="password" placeholder="">
+                        <br><br>
+                        <h3><center><input type="submit" value="Log In"/></h3><br><br>
+
+                        {% if error1 %}
+                            <p style="color:red;"> {{error1}}</p>
+                        {% else %}
+                            <p style="color:red;"> {{error2}}</p>
+                        {% endif %}
+
+                        <h3><center><b></b>Sign up if you are new</b></center></h3>
+                        
+                        <h3><center><a href="/signup">Sign Up</a></b></center></h3><br><br>
+                        
+            
+                       
+                        </div>
+                    </div>
+                
+                </form>
+                </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+
+

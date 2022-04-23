@@ -31,6 +31,12 @@ app.secret_key = secrets.token_urlsafe(16)
 def index():
     return render_template('index.html')
 
+@app.route('/cart')
+def cart():
+    return  render_cart_template(mongo)    
+
+
+
 @app.route('/men')
 def men():
     collection = mongo.db.Men
@@ -42,13 +48,11 @@ def men():
 def contacts():
     if request.method == "POST":
         contactdb = mongo.db.contactdb
-        # user_current = contactdb.find_one({'username': request.form['firstname']})
         firstname = request.form['firstname']
         lastname = request.form['lastname']
         username = request.form['email']
         message = request.form['subject']
         contactdb.insert_one({'firstname': firstname, 'lastname': lastname, 'email': username, 'message':message})
-        session['username'] = request.form['firstname']
         return redirect('/contacts')
     else:
         return render_template('contacts.html')
@@ -61,13 +65,21 @@ def render_cart_template(mongo):
 
 @app.route('/add_cart/<clothID>')
 def add_cart(clothID):
-    add_to_cart_men(mongo,clothID)
-    return render_cart_template(mongo)
+    if session:
+        add_to_cart_men(mongo,clothID)
+        return render_cart_template(mongo)
+    else:
+        return redirect('/login')
+
+        
 
 @app.route('/add_cart_women/<clothID>')
 def add_cart_women(clothID):
-    add_to_cart_women(mongo,clothID)
-    return render_cart_template(mongo)
+    if session:
+        add_to_cart_women(mongo,clothID)
+        return render_cart_template(mongo)
+    else:
+        return redirect('/login')
 
 @app.route('/Remove/<clothID>')
 def remove_items(clothID):
@@ -122,6 +134,17 @@ def checkout():
         if sum(validlist)% 10 == 0:
             credit_check = True
             print("This is a VALID CARD!")
+            customer_collection = {}
+            cart = mongo.db.cart
+            clothes = cart.find({})
+            for cloth in clothes:
+                customer_collection.update(cloth)
+            user = mongo.db.Users
+            email = request.form['email']
+            current_user = user.find_one({'email':email})
+            customer_collection.update(current_user)
+            customer= mongo.db.customer
+            customer.insert_one(customer_collection)
             return render_template('successful_transaction.html')
         
         else:
@@ -130,7 +153,77 @@ def checkout():
             return render_template('repeat_transaction.html')
 
 
-    # return render_template('checkout.html')
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == "POST":
+        users = mongo.db.Users
+        #search for username in database
+        login_user = users.find_one({'email': request.form['email']})
+
+        #if username in database
+        if login_user:
+            db_password = login_user['password']
+            #encode password
+            password = request.form['password'].encode("utf-8")
+            #compare password in database to password submitted in form
+            if password == db_password:
+                session['username'] = login_user['firstname']
+                session['email'] = login_user['email']
+                return render_template('index.html')
+            else:
+                return render_template('login.html', error1 = 'Invalid username or password combination.')
+        else:
+            return render_template('login.html', error2 = 'User not found!')
+    else:
+        return render_template('login.html')
+
+@app.route('/signup', methods=['GET', 'POST'])
+def singup():
+    if request.method == "POST":
+        users = mongo.db.Users
+        #search for username in database
+        current_user = users.find_one({'email': request.form['email']})
+
+        #if user not in database
+        if not current_user:
+            email = request.form['email']
+            firstname = request.form['firstname']
+            lastname = request.form['lastname']
+            gender = request.form['gender']
+            nation = request.form['nation']
+            state = request.form['state']
+            zipcode = request.form['zip']
+            #encode password for hashing
+            password = (request.form['password']).encode("utf-8")
+            
+            if email[len(email)-10:] != "@gmail.com":
+                raise TypeError("Username should have valid domain @gmail.com")
+            if firstname.isdigit():
+                raise TypeError("First name should be string!")
+            if lastname.isdigit():
+                raise TypeError("Last name should be string!")
+            if gender.isdigit():
+                raise TypeError("Gender should be string!")
+            if nation.isdigit():
+                raise TypeError("Nation should be string!")            
+            #add new user to database
+            users.insert_one({'firstname':firstname, 'lastname':lastname, 'email': email, 'password': password, 'gender': gender, 'nation': nation, 'state':state, 'zip':zipcode})
+            #store username in session
+            session['username'] = request.form['firstname']
+            return render_template('index.html')
+
+        else:
+            return render_template('signup.html', registration= 'User already exists!' )
+            
+    
+    else:
+        return render_template('signup.html')
+
+@app.route('/logout')
+def logout():
+    #clear username from session data
+    session.clear()
+    return redirect('/')
 
     
 
