@@ -19,8 +19,15 @@
             <a href="/index"><b>home</b></a>
             <a href="/women"><b>women</b></a>
             <a href="/men"><b>men</b></a>
-            <a href="/women"><b>Login</b></a>
             <a href="/contacts"><b>contact</b></a>
+            {% if session %}
+                <a href="/cart"><b>Cart</b></a>
+                <a href='/logout'><b>Log Out({{session['username']}})</b></a>
+            {% else %}
+                <a href='/login'><b>Log In</b></a>
+                
+            {% endif %}
+            
         </nav>
         <div class="icons">
             <div class="fas fa-bars" id="menu-bar"></div>
