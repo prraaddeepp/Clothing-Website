@@ -64,7 +64,7 @@ def add_cart(clothID):
     add_to_cart_men(mongo,clothID)
     return render_cart_template(mongo)
 
-@app.route('/add_cart_w/<clothID>')
+@app.route('/add_cart_women/<clothID>')
 def add_cart_women(clothID):
     add_to_cart_women(mongo,clothID)
     return render_cart_template(mongo)
