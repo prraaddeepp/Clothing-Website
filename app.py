@@ -7,7 +7,7 @@ from men_clothes_library import gents
 from women_clothes_library import women_clothes
 import secrets
 from bson.objectid import ObjectId
-from model import get_clothes,get_totals,add_to_cart_men,add_to_cart_women,remove_items_from_cart
+from model import get_clothes,get_totals,add_to_cart_men,add_to_cart_women,remove_items_from_cart,credit_card_check
 
 
 # # -- Initialization section --
@@ -112,27 +112,9 @@ def checkout():
         return render_template('checkout.html')
     elif request.method == 'POST':
         cardnumber = request.form['cardnumber']
-        num = cardnumber                                     # this function adds every digit of the card number to a list and,
-        validlist=[]
-        credit_check = False
-        num =  int(num)
-        if type(num) != int:
-            raise TypeError("The input must be a number")
-
-        if num <= 0 or len(str(num)) > 16:
-            raise ValueError("Number can't be negative and the length can't be greater than 16")         
+        num = cardnumber  
         
-        num =  str(num)
-        #while not credit_check:
-        for i in num:
-            validlist.append(int(i))
-        for i in range(0,len(num),2):                                             # applying Luhn Algorithm to check whether resulting sum is divisible by ten
-            validlist[i] = validlist[i] * 2
-            if validlist[i]  >= 10:
-                validlist[i] =  (validlist[i]//10 + validlist[i]%10)
-        
-        if sum(validlist)% 10 == 0:
-            credit_check = True
+        if credit_card_check(num)==True:                                   # this function adds every digit of the card number to a list and,
             print("This is a VALID CARD!")
             customer_collection = {}
             cart = mongo.db.cart
