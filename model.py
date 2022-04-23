@@ -5,11 +5,11 @@ def get_totals(mongo):
     cart_collection=mongo.db.cart
     total=sum(c['Price'] for c in cart_collection.find({}))
     main_total=total+(20/100*total)
-    if type(total) != int:
+    if type(total) not in [int,float]:
         raise TypeError("The total price must be a number")
-    if type(total)!= int:
+    if type(total) not in  [int,float]:
         raise TypeError("The total money to pay must be a number.")
-    if total <= 0 or main_total<=0:
+    if total < 0 or main_total<0:
             raise ValueError("The price to pay can't be negative.")  
 
     return [total,main_total]
